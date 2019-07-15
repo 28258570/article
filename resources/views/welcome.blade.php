@@ -61,6 +61,7 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                margin-left: 50px;
             }
         </style>
     </head>
@@ -79,7 +80,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel111
                 </div>
 
                 <div class="links">
