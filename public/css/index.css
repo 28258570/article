@@ -22,8 +22,31 @@
 	-webkit-box-shadow:2px 2px 5px #333333;
 	box-shadow:2px 2px 5px #333333;
 }
+.watchsAll{
+	display: flex;
+	justify-content: space-between;
+}
+.topItem{
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+}
+.topItem>span{
+	height: 45px;
+	line-height: 45px;
+	display: inline-block;
+	vertical-align: top;
+}
+.topItem>span:first-child{
+	margin-right: 15px;
+}
+.topItem>span:last-child{
+	font-size: 16px;
+}
 .topItem img{
-	width: 25px;
+	width: 45px;
+	height: 45px;
+	border-radius:50% ;
 }
 .lists{
 	display: flex;

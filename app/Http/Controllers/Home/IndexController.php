@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
-    //
+    //主页
     public function index()
     {
         return view('home.index.index');
+    }
+	
+	//MCN列表
+    public function mcnList()
+    {
+        return view('home.index.mcnList');
     }
 }

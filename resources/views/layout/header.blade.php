@@ -8,7 +8,7 @@
 </head>
 <link rel="stylesheet" href="/css/reset.css" />
 <link rel="stylesheet" href="/css/header.css" />
-<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+
 <body>
 	<div id="bodys">
 		<div id="headItem">
@@ -33,7 +33,7 @@
 				<div class="headClassification">
 					<div class="classification">
 						<ul class="menuList">
-							<li><a href="">首页</a></li>
+							<li class="active"><a href="">首页</a></li>
 							<li><a href="">mcn机构</a></li>
 							<li><a href="">自媒体攻略</a></li>
 							<li><a href="">新媒体攻略</a></li>
@@ -47,5 +47,10 @@
 		</div>
 		@yield('content')
 	</div>
+	
+	<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+	<script>
+		
+	</script>
 </body>
 </html>
