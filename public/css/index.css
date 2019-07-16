@@ -25,14 +25,14 @@
 	margin-left: 8px;
 	margin-right: 18px;
 }
-.category{
+.category,.menuDetails{
 	box-sizing: border-box;
 	margin-bottom: 28px;
 	width: 259px;
 	height: 129px;
 	border: 1px solid #D8E5F8;
 }
-.category>a{
+.category>a,.menuDetails>a{
 	box-sizing: border-box;
 	display: block;
 	width: 259px;
@@ -102,35 +102,5 @@
 }
 
 /*mcn机构列表*/
-#mes{
-	padding-bottom: 0;
-}
-.menuList{
-	padding: 20px;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	padding-bottom: 0;
-}
-.menuDetails{
-	width: 200px;
-	height: 100px;
-	margin-bottom: 20px;
-	margin-right: 24px;
-	-moz-box-shadow:2px 2px 5px #333333;
-	-webkit-box-shadow:2px 2px 5px #333333;
-	box-shadow:2px 2px 5px #333333;
-}
-.menuDetails:empty{
-	height: 0;
-	border: none;
-}
-.menuDetails:last-child{
-	margin: 0;
-}
-.menuDetails img{
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-}
+
 
