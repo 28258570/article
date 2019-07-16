@@ -21,7 +21,21 @@
     <script src="/layui/layui.all.js"></script>
 
 </head>
-
+<style type="text/css">
+	.container{
+		padding-top: 100px;
+	}
+	.form-signin{
+		width: 400px;
+		margin: 0 auto;
+	}
+	.form-signin h3{
+		margin-bottom: 40px;
+	}
+	.form-group{
+		margin-bottom: 20px;
+	}
+</style>
 <body>
 {{ csrf_field() }}
 <div class="container">

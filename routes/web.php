@@ -13,6 +13,7 @@
 Route::get('/', 'Home\IndexController@index');
 Route::get('/HT', 'Admin\LoginController@index');
 Route::get('home/index/mcnList','Home\IndexController@mcnList');
+Route::get('home/index/mcnDetail','Home\IndexController@mcnDetail');
 Route::resource('admin/admin', 'Admin\AdminController');
 Route::resource('admin/menu', 'Admin\MenuController');
 Route::resource('admin/role', 'Admin\RoleController');

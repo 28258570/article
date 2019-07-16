@@ -51,7 +51,7 @@
             <ul class="nav" id="main-menu">
                 @foreach(\App\Models\Menu::getMenu() as $k=>$v)
                 <li>
-                    <a class="active-menu" href="{{$v->menu_url}}"><i class="fa fa-dashboard"></i> {{$v->menu_name}}</a>
+                    <a class="" href="{{$v->menu_url}}"><i class="fa fa-dashboard"></i> {{$v->menu_name}}</a>
                 </li>
                 @endforeach
             </ul>
@@ -71,6 +71,17 @@
 <!-- JS Scripts-->
 <!-- jQuery Js -->
 <script src="/assets/js/jquery-1.10.2.js"></script>
+<script>
+	//对菜单的状态附加
+	$(document).ready(function(){
+	    $("#main-menu  a").each(function(){
+	        $this = $(this);  
+	        if($this[0].href==String(window.location)){
+	            $this.addClass("active-menu"); 
+	        }  
+	    });  
+	}); 
+</script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
 <!-- Metis Menu Js -->
