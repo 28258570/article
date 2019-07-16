@@ -109,6 +109,6 @@
 .menuLists li a:hover{
 	color: #333;
 }
-.menuLists .active a{
-	color: #333;
+.menuLists .active{
+	color: #333!important;
 }
