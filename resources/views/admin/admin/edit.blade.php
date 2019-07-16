@@ -21,7 +21,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form id="myform" action="/admin/{{$data->id}}" method="post">
+                                <form id="myform" action="/admin/admin/{{$data->id}}" method="post">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="put">
                                     <div class="form-group" >

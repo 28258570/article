@@ -17,12 +17,13 @@
                     <div class="panel-heading">
                         管理员列表
                     </div>
+                    <a style="margin-top: 10px;margin-left: 15px;" href="/admin/admin/create" class="btn btn-default btn-sm"><i class="layui-icon layui-icon-add-1"></i>添加管理员</a>
+
                     <div class="panel-body">
                         <div class="table-responsive">
                             <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
                                 <div class="row">
                                     <div class="col-sm-6">
-
                                     </div>
 
                                 </div>
@@ -41,39 +42,16 @@
                                         <td class="sorting_1">{{$v->id}}</td>
                                         <td class=" ">{{$v->username}}</td>
                                         <td class=" ">{{$v->created_at}}</td>
-                                        <td class="center ">A</td>
+                                        <td class="center ">{{$v->getRole->getRole->name or ''}}</td>
                                         <td class="center ">
-                                            <a href="#" class="btn btn-success">设置角色</a>
-                                            <a href="/admin/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
-                                            {{--<a href="#" class="btn btn-primary">primary</a>--}}
-                                            <a href="#" class="btn btn-danger">删除</a>
+                                            <a href="/admin/admin/role/{{$v->id}}" class="btn btn-success">设置角色</a>
+                                            <a href="/admin/admin/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
+                                            <button onclick="del({{$v->id}})" class="btn btn-danger">删除</button>
                                         </td></tr>
                                     </tbody>
                                     @endforeach
                                 </table>
                                 <div class="row">
-                                    <!--<div class="col-sm-6">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                                                    <a href="#">Previous</a></li>
-                                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">1</a></li>
-                                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">2</a></li>
-                                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">3</a></li>
-                                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">4</a></li>
-                                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">5</a></li>
-                                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                                    <a href="#">6</a></li>
-                                                <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                                                    <a href="#">Next</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>-->
 
                                 </div>
                                 @if (!empty($list))
@@ -88,4 +66,37 @@
             </div>
         </div>
     </div>
+    <script>
+        function del(id) {
+            layer.msg('你确定要删除吗？', {
+                time: 0 //不自动关闭
+                ,btn: ['是的', '返回']
+                ,yes: function(index){
+                    layer.close(index);
+                    $.ajax({
+                        type:'post',
+                        url:'/admin/admin/'+id,
+                        data:{
+                            _method:'delete',
+                            _token:"{{csrf_token()}}",
+                        },
+                        dataType:"json",
+                        async:false,
+                        success: function (res) {
+                            if (res.status == 0){
+                                layer.msg(res.msg);
+                            } else {
+                                layer.msg(res.msg,{
+                                    offset:['50%'],
+                                    time: 2000
+                                },function(){
+                                    window.location.reload();
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 @endsection

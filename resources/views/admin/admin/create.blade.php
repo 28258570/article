@@ -53,7 +53,7 @@
         $.each($('#myform').serializeArray(), function() {
             data[this.name] = this.value;
         });
-        $.post('{{url('admin')}}', {
+        $.post('{{url('admin/admin')}}', {
             _token: "{{csrf_token()}}",
             username: data.username,
             password: data.password,
