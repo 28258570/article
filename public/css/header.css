@@ -1,42 +1,114 @@
 #headItem{
-	background-color: #3295D9;
-	display: flex;
-	justify-content: center;
+	background-color: #fff;
 }
 #headItem>div{
-	min-width: 1200px;
-}
-#headItem>div>div{
 	width: 100%;
-	border: 1px solid red;
-	display: flex;
+}
+#headItem>div>div>div{
+	margin: 0 auto;
 	width: 1200px;
 }
 .header{
+	display: flex;
+	justify-content: space-between;
+	height: 60px;
+	line-height: 60px;
+}
+.header>div{
+	display: flex;
 	justify-content: space-between;
 }
-.logo img{
-	width: 120px;
+.fmName{
+	display: flex;
+	align-items: center;
 }
-.searchItem>div{
-	display: inline-block;
+.fmName>span,.fmName a{
+	color: #3273DC;
+	font-size: 18px;
+}
+.fmName img{
+	width: 30px;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.headSearch{
+	height: 350px;
+	background-color: #5491FF;
 }
 .headSearch{
-	justify-content: center;
+	position: relative;
 }
+.bgImg{
+	position: absolute;
+	bottom: 0;
+	right: 68px;
+}
+.bgImg img{
+	width: 370px;
+}
+.searchItem>div{
+	text-align: center;
+}
+.logo{
+	padding: 55px 0;
+}
+.logo img{
+	margin-right: 32px;
+	width: 92px;
+}
+.logo span{
+	font-size: 18px;
+	color: #fff;
+}
+.search{
+	margin: 0 auto;
+	width: 830px;
+	height: 53px;
+	display: flex;
+}
+.searchInp{
+	font-size: 18px;
+	color: #333;
+	padding-left: 7px;
+	flex: 1;
+}
+.searchBtn{
+	width:145px;
+	height:52.5px;
+	line-height: 52.5px;
+	background:#333;
+	color: #fff;
+	font-size: 18px;
+	cursor: pointer;
+}
+
 .headClassification{
 	background-color: #fff;
 }
-.classification{
+.menuLists{
+	height: 68px;
+	line-height: 68px;
 }
-.menuList li{
-	margin-right: 10px;
-	padding: 20px 12px;
+.classification{
+	display: flex;
+	justify-content: center;
+}
+.menuLists li{
 	display: inline-block;
 }
-.menuList li:hover{
-	border-bottom: 2px solid #3295D9;
+.menuLists li a{
+	border-right: 1px solid #686464;
+	padding:0 42px;
+	color:#4B7AF2;
+	font-size: 18px;
 }
-.menuList .active{
-	border-bottom: 2px solid #3295D9;
+.menuLists li:last-child a{
+	border: none;
+}
+.menuLists li a:hover{
+	color: #333;
+}
+.menuLists .active a{
+	color: #333;
 }
