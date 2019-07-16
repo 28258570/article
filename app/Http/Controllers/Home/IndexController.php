@@ -18,4 +18,10 @@ class IndexController extends Controller
     {
         return view('home.index.mcnList');
     }
+	
+	//MCN商品详情
+    public function mcnDetail()
+    {
+        return view('home.index.mcnDetail');
+    }
 }
