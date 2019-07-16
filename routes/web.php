@@ -12,4 +12,5 @@
 
 Route::get('/', 'Home\IndexController@index');
 Route::get('home/index/mcnList','Home\IndexController@mcnList');
-Route::resource('admin', 'Admin\AdminController');
+Route::resource('admin/admin', 'Admin\AdminController');
+Route::resource('admin/menu', 'Admin\MenuController');

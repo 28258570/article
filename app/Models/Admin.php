@@ -19,7 +19,15 @@ class Admin extends Model
     {
         $model = new self();
         $model->username = $params['username'];
-        $model->password = encrypt($params['password']);
+        $model->password = bcrypt($params['password']);
         return $model->save();
+    }
+
+    public static function getData($params,$page=15)
+    {
+        $list = new self();
+
+        $list = $list->orderBy('id', 'desc')->paginate($page);
+        return $list;
     }
 }
