@@ -22,7 +22,7 @@
 				<div class="headSearch">
 					<div class="searchItem">
 						<div class="logo">
-							<img src="img/12.jpg">
+							<img src="/img/12.jpg">
 						</div>
 						<div class="search">
 							<span><input type="text" /></span>
@@ -33,8 +33,8 @@
 				<div class="headClassification">
 					<div class="classification">
 						<ul class="menuList">
-							<li class="active"><a href="">首页</a></li>
-							<li><a href="">mcn机构</a></li>
+							<li class="active"><a href="http://www.blog.cn">首页</a></li>
+							<li><a href="http://www.blog.cn/home/index/mcnList">mcn机构</a></li>
 							<li><a href="">自媒体攻略</a></li>
 							<li><a href="">新媒体攻略</a></li>
 							<li><a href="">意见反馈</a></li>
