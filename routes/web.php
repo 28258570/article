@@ -16,6 +16,8 @@ Route::get('home/index/mcnList','Home\IndexController@mcnList');
 Route::resource('admin/admin', 'Admin\AdminController');
 Route::resource('admin/menu', 'Admin\MenuController');
 Route::resource('admin/role', 'Admin\RoleController');
+Route::resource('admin/center', 'Admin\CenterController');
+Route::resource('admin/user', 'Admin\UserController');
 Route::any('admin/role/role/{id}', 'Admin\RoleController@role');
 Route::any('admin/role/auth', 'Admin\RoleController@auth');
 Route::any('admin/admin/role/{id}', 'Admin\AdminController@role');
