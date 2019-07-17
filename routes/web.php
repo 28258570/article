@@ -19,14 +19,14 @@ Route::get('home/index/xinmei','Home\IndexController@xinmei');//新媒体攻略
 Route::get('home/others/feedBack','Home\OthersController@feedBack');//意见反馈
 Route::get('home/index/joinIn','Home\IndexController@joinIn');//加盟合作
 Route::get('home/index/links','Home\IndexController@links');//友情链接
-Route::resource('admin/admin', 'Admin\AdminController');
-Route::resource('admin/menu', 'Admin\MenuController');
-Route::resource('admin/role', 'Admin\RoleController');
-Route::resource('admin/center', 'Admin\CenterController');
-Route::resource('admin/user', 'Admin\UserController');
-Route::any('admin/role/role/{id}', 'Admin\RoleController@role');
-Route::any('admin/role/auth', 'Admin\RoleController@auth');
-Route::any('admin/admin/role/{id}', 'Admin\AdminController@role');
-Route::any('admin/login/login', 'Admin\LoginController@login');
-Route::any('admin/login/logout', 'Admin\LoginController@logout');
-Route::post('admin/user/order', 'Admin\UserController@order');
+Route::resource('admin/admin', 'Admin\AdminController');//管理员管理
+Route::resource('admin/menu', 'Admin\MenuController');//菜单管理
+Route::resource('admin/role', 'Admin\RoleController');//角色管理
+Route::resource('admin/center', 'Admin\CenterController');//个人中心
+Route::resource('admin/user', 'Admin\UserController');//用户管理
+Route::any('admin/role/role/{id}', 'Admin\RoleController@role');//设置权限页面
+Route::any('admin/role/auth', 'Admin\RoleController@auth');//设置权限
+Route::any('admin/admin/role/{id}', 'Admin\AdminController@role');//设置角色
+Route::any('admin/login/login', 'Admin\LoginController@login');//后台登录页面
+Route::any('admin/login/logout', 'Admin\LoginController@logout');//后台注销
+Route::post('admin/user/order', 'Admin\UserController@order');//获取用户订单
