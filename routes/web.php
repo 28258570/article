@@ -24,6 +24,8 @@ Route::resource('admin/menu', 'Admin\MenuController');//菜单管理
 Route::resource('admin/role', 'Admin\RoleController');//角色管理
 Route::resource('admin/center', 'Admin\CenterController');//个人中心
 Route::resource('admin/user', 'Admin\UserController');//用户管理
+Route::resource('admin/mcn', 'Admin\McnController');//MCN机构管理
+Route::resource('admin/mcnMeal', 'Admin\McnMealController');//MCN机构套餐管理
 Route::any('admin/role/role/{id}', 'Admin\RoleController@role');//设置权限页面
 Route::any('admin/role/auth', 'Admin\RoleController@auth');//设置权限
 Route::any('admin/admin/role/{id}', 'Admin\AdminController@role');//设置角色
