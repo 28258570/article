@@ -12,8 +12,11 @@ class LoginController extends Controller
      * 登录页面
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->session()->has('username') && $request->session()->has('admin_id')){
+            return redirect('admin/center');
+        }
         return view('admin.login.index');
     }
 
