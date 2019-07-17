@@ -1,0 +1,105 @@
+#content{
+	background-color: #f2f2f2;
+	width: 100%;
+	min-width: 1200px;
+	min-height: 450px;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 30px;
+}
+.containers{
+	padding: 45px 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.containers>div{
+	width: 1200px;
+	background-color: #fff;
+}
+.goodDetail{
+	height: 260px;
+	padding: 30px 50px;
+	margin-bottom: 60px;
+	box-sizing: border-box;
+}
+.goodName{
+	color: #333;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+.details{
+	padding-right: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.details>div:nth-child(2){
+	width: 200px;
+}
+.details>div:nth-child(2)>span{
+	color: #333;
+	font-size: 18px;
+	display: block;
+}
+.details>div:nth-child(2)>span:first-child{
+	margin-bottom: 25px;
+}
+.price{
+	font-size: 40px;
+	color:#D12727 ;
+}
+.goodImg{
+	width: 330px;
+	height: 137px;
+}
+.payMoment{
+	width: 240px;
+	height: 72px;
+	line-height: 72px;
+	background-color: #5491FF;
+	cursor: pointer;
+	color: #fff;
+	font-size: 30px;
+	text-align: center;
+	display: block;
+}
+.shouhou>span{
+	display: block;
+	color: #333;
+	font-size: 18px;
+}
+.shouhou>span:first-child{
+	margin-bottom: 40px;
+}
+.tiaoma{
+	width: 120px;
+	height: 120px;
+}
+.contents{
+	padding: 30px 50px;
+	height: 470px;
+	box-sizing: border-box;
+}
+.contents>p{
+	color: #333;
+	font-size: 30px;
+	margin-bottom: 35px;
+}
+.tishi{
+	height:80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.tishi>span{
+	background-color: #5491FF;
+	display: block;
+	text-align: center;
+	width: 380px;
+	height: 90px;
+	line-height: 90px;
+	color: #fff;
+	cursor: default;
+	font-size: 20px;
+}
