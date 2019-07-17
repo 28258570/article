@@ -24,3 +24,4 @@ Route::any('admin/role/auth', 'Admin\RoleController@auth');
 Route::any('admin/admin/role/{id}', 'Admin\AdminController@role');
 Route::any('admin/login/login', 'Admin\LoginController@login');
 Route::any('admin/login/logout', 'Admin\LoginController@logout');
+Route::post('admin/user/order', 'Admin\UserController@order');
