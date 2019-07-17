@@ -43,13 +43,13 @@
 				<div class="headClassification">
 					<div class="classification">
 						<ul class="menuLists">
-							<li class="active"><a href="http://www.blog.cn">首页</a></li><li>
+							<li><a href="http://www.blog.cn">首页</a></li><li>
 								<a href="http://www.blog.cn/home/index/mcnList">mcn机构</a></li><li>
-								<a href="">自媒体攻略</a></li><li>
-								<a href="">新媒体攻略</a></li><li>
-								<a href="">意见反馈</a></li><li>
-								<a href="">加盟合作</a></li><li>
-								<a href="">友情链接</a></li>
+								<a href="http://www.blog.cn/home/index/zimei">自媒体攻略</a></li><li>
+								<a href="http://www.blog.cn/home/index/xinmei">新媒体攻略</a></li><li>
+								<a href="http://www.blog.cn/home/index/fankui">意见反馈</a></li><li>
+								<a href="http://www.blog.cn/home/index/rember">加盟合作</a></li><li>
+								<a href="http://www.blog.cn/home/index/links">友情链接</a></li>
 						</ul>
 					</div>
 				</div>
@@ -61,7 +61,15 @@
 	
 	<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
 	<script>
-		
+		//对菜单的状态附加
+		$(document).ready(function(){
+		    $(".menuLists  li a").each(function(){
+		        $this = $(this);  
+		        if($this[0].href==String(window.location)){
+		            $this.addClass("active"); 
+		        }  
+		    });  
+		}); 
 	</script>
 </body>
 </html>
