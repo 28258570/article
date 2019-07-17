@@ -25,7 +25,6 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <form action="" name="search">
-                                            <label>用户名:<input type="text" class="form-control input-sm" name="username" value="{{$params['username'] or ''}}" aria-controls="dataTables-example"></label>
                                             <label>手机号:<input type="text" class="form-control input-sm" name="mobile" value="{{$params['mobile'] or ''}}" aria-controls="dataTables-example"></label>
                                             <button type="submit" class="btn btn-default">提交</button>
                                         </form>
@@ -36,7 +35,6 @@
                                     <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending">ID</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">用户名</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">手机号</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">创建时间</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width:250px;">操作</th></tr>
@@ -45,7 +43,6 @@
                                     @foreach($list as $k=>$v)
                                     <tr class="gradeA odd">
                                         <td class="sorting_1">{{$v->id}}</td>
-                                        <td class=" ">{{$v->username}}</td>
                                         <td class=" ">{{$v->mobile}}</td>
                                         <td class="center ">{{$v->created_at}}</td>
                                         <td class="center ">
