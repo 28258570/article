@@ -13,15 +13,34 @@ class IndexController extends Controller
         return view('home.index.index');
     }
 	
-	//MCN列表
+	//MCN机构列表
     public function mcnList()
     {
         return view('home.index.mcnList');
     }
 	
-	//MCN商品详情
-    public function mcnDetail()
+	//自媒体攻略
+    public function zimei()
     {
-        return view('home.index.mcnDetail');
+        return view('home.index.zimei');
     }
+	
+	//新媒体攻略
+    public function xinmei()
+    {
+        return view('home.index.xinmei');
+    }
+	
+	//加盟合作
+    public function joinIn()
+    {
+        return view('home.index.joinIn');
+    }
+	
+	//友情链接
+    public function links()
+    {
+        return view('home.index.links');
+    }
+	
 }

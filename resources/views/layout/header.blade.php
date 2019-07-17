@@ -47,8 +47,8 @@
 								<a href="http://www.blog.cn/home/index/mcnList">mcn机构</a></li><li>
 								<a href="http://www.blog.cn/home/index/zimei">自媒体攻略</a></li><li>
 								<a href="http://www.blog.cn/home/index/xinmei">新媒体攻略</a></li><li>
-								<a href="http://www.blog.cn/home/index/fankui">意见反馈</a></li><li>
-								<a href="http://www.blog.cn/home/index/rember">加盟合作</a></li><li>
+								<a href="http://www.blog.cn/home/others/feedBack">意见反馈</a></li><li>
+								<a href="http://www.blog.cn/home/index/joinIn">加盟合作</a></li><li>
 								<a href="http://www.blog.cn/home/index/links">友情链接</a></li>
 						</ul>
 					</div>

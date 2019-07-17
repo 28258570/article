@@ -5,10 +5,10 @@
 	<div class="containers">
 		
 		<div class="goodDetail">
-			132
+			
 		</div>
 		<div class="contentDetail">
-			14215155
+			
 		</div>
 		
 	</div>
