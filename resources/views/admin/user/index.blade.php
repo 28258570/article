@@ -240,10 +240,12 @@
         
         //点击查看账户购买数据
         function watchDetail(id){
+        	$('.log').removeClass('zoomOut')
         	$('.dia,.log').show();
         	$('.log').addClass('animated zoomIn')
         }
         function closesThis(){
+        	$('.log').removeClass('zoomIn')
         	$('.dia').hide()
 			$('.log').addClass('animated zoomOut')
         }
