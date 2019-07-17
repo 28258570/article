@@ -70,7 +70,7 @@
                     offset:['50%'],
                     time: 1500
                 },function(){
-                    window.location.href = '/admin/admin';
+                    window.location.href = '/admin/center';
                 });
             }
         }, 'json');

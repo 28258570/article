@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.admin');
+    }
+
     /**
      * 用户列表
      *
@@ -95,6 +100,18 @@ class UserController extends Controller
             }
         }catch(\Exception $e) {
             $result = ['status' => 0, 'msg' => $e->getMessage()];
+        }
+        return response()->json($result);
+    }
+
+    public function order(Request $request)
+    {
+        try {
+            $user = (new User())->find($request->input('id'));
+            $data['mobile'] = $user->mobile;
+            $result = ['status' => 1, 'data' => $data];
+        }catch(\Exception $e) {
+            $result = ['status' => 0, 'data' => ''];
         }
         return response()->json($result);
     }

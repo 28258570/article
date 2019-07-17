@@ -19,10 +19,6 @@ class User extends Model
     {
         $list = (new self());
 
-        if (!empty($params['username'])){
-            $list = $list->where('username','=',$params['username']);
-        }
-
         if (!empty($params['mobile'])){
             $list = $list->where('mobile','=',$params['mobile']);
         }

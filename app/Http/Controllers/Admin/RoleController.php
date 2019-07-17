@@ -130,7 +130,7 @@ class RoleController extends Controller
     }
 
     /**
-     * 设置权限
+     * 设置权限页面
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

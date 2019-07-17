@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class CenterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.admin');
+    }
+
     /**
      * 个人中心
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

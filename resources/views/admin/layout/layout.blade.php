@@ -14,6 +14,99 @@
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet" />
     <link href="/layui/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{URL::asset('/css/animate.css')}}">
+    <style>
+        .dia{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9;
+            background-color: #000;
+            opacity: 0.5;
+        }
+        .log{
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            width: 500px;
+            height: 400px;
+            margin-left: -250px;
+            background-color: #fff;
+            z-index: 99;
+            padding: 30px;
+        }
+        .closes{
+            font-size: 40px;
+            position: absolute;
+            top:1px;
+            right: 10px;
+            color: #000;
+            cursor: pointer;
+        }
+        .phones{
+            font-size: 18px;
+            color: #333;
+        }
+        .lists{
+            height: 240px;
+            margin: 15px 0;
+            overflow-y: auto;
+            padding: 0 10px;
+        }
+        .lists>div{
+            margin-bottom: 20px;
+            display: flex;justify-content: space-between;
+        }
+        .yigou>p{
+            margin-top: 20px;
+        }
+        .mediaName{
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 5px;
+            display: inline-block;
+            background-color: #d0d0d0;
+        }
+        .deletes{
+            cursor: pointer;
+            width: 74px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: red;
+            color: #fff;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        /*美化滚动条*/
+        /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+        .lists::-webkit-scrollbar
+        {
+            width: 2px;  /*滚动条宽度*/
+            height: 10px;  /*滚动条高度*/
+        }
+        /*定义滚动条轨道 内阴影+圆角*/
+        .lists::-webkit-scrollbar-track
+        {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: 10px;  /*滚动条的背景区域的圆角*/
+            background-color: #f5f5f5;/*滚动条的背景颜色*/
+        }
+        /*定义滑块 内阴影+圆角*/
+        .lists::-webkit-scrollbar-thumb
+        {
+            border-radius: 10px;  /*滚动条的圆角*/
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #f5f5f5;  /*滚动条的背景颜色*/
+        }
+        .dialog>div{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>

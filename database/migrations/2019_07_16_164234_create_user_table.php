@@ -16,9 +16,8 @@ class CreateUserTable extends Migration
         //
         Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username')->comment('用户名');
-            $table->string('passowrd')->comment('密码');
             $table->string('mobile')->default('')->comment('手机号');
+            $table->string('passowrd')->comment('密码');
             $table->timestamps();
         });
     }
