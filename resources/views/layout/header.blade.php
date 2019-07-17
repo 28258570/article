@@ -9,6 +9,39 @@
 <link rel="stylesheet" href="/css/reset.css" />
 <link rel="stylesheet" href="/css/header.css" />
 
+<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script>
+	function showMsg(text,position){
+		var show = $('.show_msg').length
+		if(show>0){
+			
+		}else{
+			var	div	= $('<div></div>');
+				div.addClass('show_msg');
+			var span = $('<span></span>');
+				span.addClass('show_span');
+				span.appendTo(div);
+				span.text(text);
+			$('body').append(div);
+		}
+		$(".show_span").text(text);
+		
+		if(position=='bottom'){
+			$(".show_msg").css('bottom','5%');
+		}else if(position=='center'){
+			$(".show_msg").css('top','');
+			$(".show_msg").css('bottom','50%');
+		}else{
+			$(".show_msg").css('bottom','95%');
+		}
+		$('.show_msg').hide();
+		$('.show_msg').fadeIn(500);
+		$('.show_msg').fadeOut(2500);
+	}
+
+</script>
+
+
 <body>
 	<div id="bodys">
 		
@@ -59,7 +92,7 @@
 		@yield('content')
 	</div>
 	
-	<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+	
 	<script>
 		//对菜单的状态附加
 		$(document).ready(function(){

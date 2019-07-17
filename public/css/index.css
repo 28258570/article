@@ -2,6 +2,7 @@
 	background-color: #f2f2f2;
 	width: 100%;
 	min-width: 1200px;
+	min-height: 450px;
 	display: flex;
 	justify-content: center;
 	padding-bottom: 30px;
@@ -103,8 +104,65 @@
 	display: flex;
 	justify-content: space-between;
 }
-
+.mediaDetail>a>span:first-child{
+	font-size: 14px;
+	color: #333;
+}
+.mediaDetail>a>span:last-child{
+	font-size: 12px;
+	color: #666;
+}
 /*mcn机构列表*/
 
 
-/*mcn商品详情*/
+
+/*自媒体列表*/
+.zimeiLists{
+	padding: 30px 30px 0 30px!important;
+}
+
+/*新媒体列表*/
+.xinmeiLists{
+	padding: 30px!important;
+}
+.mediaList{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.medias:hover{
+	box-shadow:0px 1px 3px 3px rgba(51,90,234,0.07);
+}
+.medias{
+	margin-bottom: 30px;
+	width: 1100px;
+	height: 48px;
+	line-height: 48px;
+	border: 1px solid #D8E5F8;
+}
+.medias>a>span:first-child{
+	font-size: 14px;
+	color: #333;
+}
+.medias>a>span:last-child{
+	font-size: 12px;
+	color: #666;
+}
+.medias:last-child{
+	margin-bottom: 0;
+}
+.medias>a{
+	box-sizing: border-box;
+	padding: 0 20px;
+	width: 1100px;
+	height: 48px;
+	line-height: 48px;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+/*加盟合作*/
+
+/*友情链接*/
+
