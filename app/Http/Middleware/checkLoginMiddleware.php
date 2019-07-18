@@ -17,7 +17,7 @@ class checkLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($this->checkAuthAndLogin($request)){
+        if ($request->session()->has('admin_id')){
             return $next($request);
         } else {
             return redirect('/HT');
