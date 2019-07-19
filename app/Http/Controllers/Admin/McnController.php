@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\FileUpload;
+use App\Models\Mcn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class McnController extends Controller
 {
@@ -40,7 +43,16 @@ class McnController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        if ($request->isMethod('post')) {
+            $file_cover = $request->file('cover');
+            $file_cover_name = FileUpload::fileUpload($file_cover,'mcn');
+            $params['name'] = $request->input('name');
+            $params['introduce'] = $request->input('introduce');
+            $params['price'] = $request->input('price');
+            $params['content'] = $request->input('content');
+            $params['cover'] = $file_cover_name;
+            Mcn::addData($params);
+        }
     }
 
     /**
@@ -86,5 +98,11 @@ class McnController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function upload(Request $request)
+    {
+//        dd($request->file());
+//        $str=file_get_contents($_FILE['f']['tmp_name']);
     }
 }

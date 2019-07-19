@@ -1,5 +1,12 @@
 @extends('admin.layout.layout')
 @section('content')
+    <style>
+        .small-right{
+            position: relative;
+            left: 10px;
+            color: #8d8888;
+        }
+    </style>
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
@@ -19,6 +26,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <form id="myform" onsubmit="return false">
+                                    <div class="form-group" >
+                                        <label>上传</label><small class="small-right">支持DOCX、DOC、Office格式，点击下方上传文档将自动生成至内容框内</small>
+                                        <input type="file" id="article" onchange="upload(this)">
+                                        {{--<button class="layui-btn layui-btn-sm" onclick="upload()" style="position:relative;top: 10px;">上传</button>--}}
+                                    </div>
                                     <div class="form-group" >
                                         <label>MCN名称</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="MCN名称">
@@ -70,12 +82,11 @@
         var introduce = $.trim($('#introduce').val());
         var price = $.trim($('#price').val());
         var content = ue.getContent();
-        console.log(content);
         var cover = $('#cover')[0].files[0];
 
         var formData = new FormData();
 
-        formData.append("cover",$('#cover')[0].files[0]);
+        formData.append("cover",cover);
         formData.append("name", name);
         formData.append("introduce", introduce);
         formData.append("price", price);
@@ -119,7 +130,38 @@
         reader.readAsDataURL(file.files[0]);
     }
 
+    function upload(input) {
+        //支持chrome IE10
+        if (window.FileReader) {
+            var file = input.files[0];
+            filename = file.name.split(".")[0];
+            var reader = new FileReader();
+            reader.onload = function() {
+                ue.setContent(this.result);
+            };
+            reader.readAsText(file);
+        }
+//        ue.setContent(reader);
+        {{--$.ajaxSetup({--}}
+            {{--headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}--}}
+        {{--});--}}
+        {{--$.ajax({--}}
+            {{--url:'/admin/mcn/upload',--}}
+            {{--dataType:'json',--}}
+            {{--type:'POST',--}}
+            {{--async: false,--}}
+            {{--data: formData,--}}
+            {{--processData : false, // 使数据不做处理--}}
+            {{--contentType : false, // 不要设置Content-Type请求头--}}
+            {{--success: function(data){--}}
+{{--//                console.log(data);--}}
+{{--//                if (data.status == 'ok') {--}}
+{{--//                    alert('上传成功！');--}}
+{{--//                }--}}
 
+            {{--}--}}
+        {{--});--}}
+    }
 
 </script>
 @endsection

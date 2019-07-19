@@ -177,6 +177,7 @@
 </script>
 <!-- Bootstrap Js -->
 <script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery-2.0.0.min.js"></script>
 <!-- Metis Menu Js -->
 <script src="/assets/js/jquery.metisMenu.js"></script>
 <!-- Morris Chart Js -->

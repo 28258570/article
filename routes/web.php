@@ -32,3 +32,4 @@ Route::any('admin/admin/role/{id}', 'Admin\AdminController@role');//设置角色
 Route::any('admin/login/login', 'Admin\LoginController@login');//后台登录页面
 Route::any('admin/login/logout', 'Admin\LoginController@logout');//后台注销
 Route::post('admin/user/order', 'Admin\UserController@order');//获取用户订单
+Route::post('admin/mcn/upload', 'Admin\McnController@upload');//文章上传
