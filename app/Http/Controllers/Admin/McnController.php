@@ -20,9 +20,9 @@ class McnController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('admin.mcn.index');
     }
 
     /**
@@ -46,12 +46,13 @@ class McnController extends Controller
         if ($request->isMethod('post')) {
             $file_cover = $request->file('cover');
             $file_cover_name = FileUpload::fileUpload($file_cover,'mcn');
-            $params['name'] = $request->input('name');
-            $params['introduce'] = $request->input('introduce');
-            $params['price'] = $request->input('price');
-            $params['content'] = $request->input('content');
-            $params['cover'] = $file_cover_name;
-            Mcn::addData($params);
+            dd($file_cover_name);
+//            $params['name'] = $request->input('name');
+//            $params['introduce'] = $request->input('introduce');
+//            $params['price'] = $request->input('price');
+//            $params['content'] = $request->input('content');
+//            $params['cover'] = $file_cover_name;
+//            Mcn::addData($params);
         }
     }
 
@@ -102,7 +103,7 @@ class McnController extends Controller
 
     public function upload(Request $request)
     {
-//        dd($request->file());
+        dd();
 //        $str=file_get_contents($_FILE['f']['tmp_name']);
     }
 }

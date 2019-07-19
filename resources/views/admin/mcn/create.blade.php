@@ -27,7 +27,7 @@
                             <div class="col-lg-6">
                                 <form id="myform" onsubmit="return false">
                                     <div class="form-group" >
-                                        <label>上传</label><small class="small-right">支持DOCX、DOC、Office格式，点击下方上传文档将自动生成至内容框内</small>
+                                        <label>上传</label><small class="small-right">支持DOCX、DOC、Office格式，点击上传文档将自动生成至内容框内</small>
                                         <input type="file" id="article" onchange="upload(this)">
                                         {{--<button class="layui-btn layui-btn-sm" onclick="upload()" style="position:relative;top: 10px;">上传</button>--}}
                                     </div>
@@ -102,8 +102,8 @@
             type:'POST',
             async: false,
             data: formData,
-            processData : false, // 使数据不做处理
-            contentType : false, // 不要设置Content-Type请求头
+            processData : false, //使数据不做处理
+            contentType : false, //不要设置Content-Type请求头
             success: function(data){
 //                console.log(data);
 //                if (data.status == 'ok') {
@@ -132,35 +132,38 @@
 
     function upload(input) {
         //支持chrome IE10
-        if (window.FileReader) {
-            var file = input.files[0];
-            filename = file.name.split(".")[0];
-            var reader = new FileReader();
-            reader.onload = function() {
-                ue.setContent(this.result);
-            };
-            reader.readAsText(file);
-        }
+//        if (window.FileReader) {
+//            var file = input.files[0];
+//            filename = file.name.split(".")[0];
+//            var reader = new FileReader();
+//            reader.onload = function() {
+//                ue.setContent(this.result);
+//            };
+//            reader.readAsText(file);
+//        }
 //        ue.setContent(reader);
-        {{--$.ajaxSetup({--}}
-            {{--headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}--}}
-        {{--});--}}
-        {{--$.ajax({--}}
-            {{--url:'/admin/mcn/upload',--}}
-            {{--dataType:'json',--}}
-            {{--type:'POST',--}}
-            {{--async: false,--}}
-            {{--data: formData,--}}
-            {{--processData : false, // 使数据不做处理--}}
-            {{--contentType : false, // 不要设置Content-Type请求头--}}
-            {{--success: function(data){--}}
-{{--//                console.log(data);--}}
-{{--//                if (data.status == 'ok') {--}}
-{{--//                    alert('上传成功！');--}}
-{{--//                }--}}
+        var formData = new FormData();
+        formData.append("file",input.files[0]);
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
+        });
+        $.ajax({
+            url:'/admin/mcn/upload',
+            dataType:'json',
+            type:'POST',
+            async: false,
+            data: formData,
+            processData : false, // 使数据不做处理
+            contentType : false, // 不要设置Content-Type请求头
+            success: function(res){
+                console.log(res);
+//                console.log(data);
+//                if (data.status == 'ok') {
+//                    alert('上传成功！');
+//                }
 
-            {{--}--}}
-        {{--});--}}
+            }
+        });
     }
 
 </script>

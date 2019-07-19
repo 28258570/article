@@ -46,9 +46,9 @@
                                             <td class=" ">{{$v->menu_ids}}</td>
                                             <td class="center ">{{$v->created_at}}</td>
                                             <td class="center ">
-                                                <a href="/admin/role/role/{{$v->id}}" class="btn btn-success">设置权限</a>
+                                                <a href="/admin/role/role/{{$v->id}}" class="btn btn-success btn-sm">设置权限</a>
                                                 <a href="/admin/role/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
-                                                <button onclick="del({{$v->id}})" class="btn btn-danger">删除</button>
+                                                <button onclick="del({{$v->id}})" class="btn btn-danger btn-sm">删除</button>
                                             </td></tr>
                                     </tbody>
                                     @endforeach

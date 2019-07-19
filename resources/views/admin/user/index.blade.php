@@ -46,8 +46,8 @@
                                         <td class=" ">{{$v->mobile}}</td>
                                         <td class="center ">{{$v->created_at}}</td>
                                         <td class="center ">
-                                            <button class="btn btn-success" onclick="watchDetail({{$v->id}})">查看</button>
-                                            <button onclick="del({{$v->id}})" class="btn btn-danger">删除</button>
+                                            <button class="btn btn-success btn-sm" onclick="watchDetail({{$v->id}})">查看</button>
+                                            <button onclick="del({{$v->id}})" class="btn btn-danger btn-sm">删除</button>
                                         </td></tr>
                                     </tbody>
                                     @endforeach
