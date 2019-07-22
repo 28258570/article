@@ -101,9 +101,23 @@ class McnController extends Controller
         //
     }
 
+    /**
+     * 解析上传文件的内容并解析
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function upload(Request $request)
     {
-        dd();
-//        $str=file_get_contents($_FILE['f']['tmp_name']);
+        try {
+            if ('docx' == $request->file('file')->getClientOriginalExtension()){
+                $content = FileUpload::parseWord($request->file('file')->getRealPath());
+                $result = ['status' => 1, 'data' => $content];
+            } else {
+                $result = ['status' => 0, 'data' => ''];
+            }
+        }catch(\Exception $e) {
+            $result = ['status' => 0, 'data' => ''];
+        }
+        return response()->json($result);
     }
 }

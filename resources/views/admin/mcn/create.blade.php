@@ -27,7 +27,7 @@
                             <div class="col-lg-6">
                                 <form id="myform" onsubmit="return false">
                                     <div class="form-group" >
-                                        <label>上传</label><small class="small-right">支持DOCX、DOC、Office格式，点击上传文档将自动生成至内容框内</small>
+                                        <label>上传</label><small class="small-right">仅支持DOCX格式，点击上传文档将自动生成至内容框内</small>
                                         <input type="file" id="article" onchange="upload(this)">
                                         {{--<button class="layui-btn layui-btn-sm" onclick="upload()" style="position:relative;top: 10px;">上传</button>--}}
                                     </div>
@@ -117,6 +117,7 @@
         });
     }
 
+    //上传展示图片
     function show(file){
         var reader = new FileReader();	// 实例化一个FileReader对象，用于读取文件
         var img = document.getElementById('img_cover'); 	// 获取要显示图片的标签
@@ -130,18 +131,8 @@
         reader.readAsDataURL(file.files[0]);
     }
 
+    //上传文件
     function upload(input) {
-        //支持chrome IE10
-//        if (window.FileReader) {
-//            var file = input.files[0];
-//            filename = file.name.split(".")[0];
-//            var reader = new FileReader();
-//            reader.onload = function() {
-//                ue.setContent(this.result);
-//            };
-//            reader.readAsText(file);
-//        }
-//        ue.setContent(reader);
         var formData = new FormData();
         formData.append("file",input.files[0]);
         $.ajaxSetup({
@@ -156,12 +147,11 @@
             processData : false, // 使数据不做处理
             contentType : false, // 不要设置Content-Type请求头
             success: function(res){
-                console.log(res);
-//                console.log(data);
-//                if (data.status == 'ok') {
-//                    alert('上传成功！');
-//                }
-
+                if (res.status == 0){
+                    layer.msg('解析失败');
+                } else {
+                    ue.setContent(res.data);
+                }
             }
         });
     }
