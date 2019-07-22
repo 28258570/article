@@ -65,9 +65,9 @@
                                             <td class="center ">
                                                 <a href="/admin/mcn/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
                                                 @if($v->state == 1)
-                                                    <button class="btn btn-success btn-sm">上架</button>
+                                                    <button class="btn btn-success btn-sm" onclick="change({{$v->id}},{{$v->state}})">上架</button>
                                                 @else
-                                                    <button class="btn btn-warning btn-sm">下架</button>
+                                                    <button class="btn btn-warning btn-sm" onchange="change({{$v->id}},{{$v->state}}})">下架</button>
                                                 @endif
                                                 <button onclick="del()" class="btn btn-danger btn-sm">删除</button>
                                             </td></tr>
@@ -123,29 +123,47 @@
         }
 
         //点击查看账户购买数据
-        function watchDetail(id){
-            $('.log').removeClass('zoomOut')
-            $('.dia,.log').show();
-            $('.log').addClass('animated zoomIn')
-            $.ajax({
-                type:'post',
-                url:'/admin/user/order',
-                data:{
-                    _token: "{{csrf_token()}}",
-                    id: id
-                },
-                dataType:"json",
-                async:false,
-                success: function (res) {
-                    $('#mobile').html(res.data.mobile);
-                }
-            });
-        }
+        {{--function watchDetail(id){--}}
+            {{--$('.log').removeClass('zoomOut')--}}
+            {{--$('.dia,.log').show();--}}
+            {{--$('.log').addClass('animated zoomIn')--}}
+            {{--$.ajax({--}}
+                {{--type:'post',--}}
+                {{--url:'/admin/user/order',--}}
+                {{--data:{--}}
+                    {{--_token: "{{csrf_token()}}",--}}
+                    {{--id: id--}}
+                {{--},--}}
+                {{--dataType:"json",--}}
+                {{--async:false,--}}
+                {{--success: function (res) {--}}
+                    {{--$('#mobile').html(res.data.mobile);--}}
+                {{--}--}}
+            {{--});--}}
+        {{--}--}}
         //关闭
         function closesThis(){
             $('.log').removeClass('zoomIn')
             $('.dia').hide()
             $('.log').addClass('animated zoomOut')
+        }
+
+        //改变状态
+        function change(id,state) {
+            $.ajax({
+                type:'post',
+                url:'/admin/mcn/change',
+                data:{
+                    _token: "{{csrf_token()}}",
+                    id: id,
+                    state: state
+                },
+                dataType:"json",
+                async:false,
+                success: function (res) {
+
+                }
+            });
         }
 
     </script>

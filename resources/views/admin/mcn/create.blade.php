@@ -27,11 +27,6 @@
                             <div class="col-lg-6">
                                 <form id="myform" onsubmit="return false">
                                     <div class="form-group" >
-                                        <label>上传</label><small class="small-right">仅支持DOCX格式，点击上传文档将自动生成至内容框内</small>
-                                        <input type="file" id="article" onchange="upload(this)">
-                                        {{--<button class="layui-btn layui-btn-sm" onclick="upload()" style="position:relative;top: 10px;">上传</button>--}}
-                                    </div>
-                                    <div class="form-group" >
                                         <label>MCN名称</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="MCN名称">
                                     </div>
@@ -50,14 +45,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>内容</label>
-                                        <!-- 加载编辑器的容器 -->
-                                        <script id="container" name="content" type="text/plain"></script>
-                                        <!-- 配置文件 -->
-                                        <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
-                                        <!-- 编辑器源码文件 -->
-                                        <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
-                                    </div>
 
+                                    </div>
                                     <button class="btn btn-default" onclick="confim()">确认</button>
                                     <button type="reset" class="btn btn-default" onclick="javascript:history.go(-1);">返回</button>
                                 </form>
@@ -74,8 +63,6 @@
         </div>
     </div>
 <script>
-    //实例化编辑器
-    var ue = UE.getEditor('container');
 
     function confim() {
         var name = $.trim($('#name').val());
@@ -92,7 +79,7 @@
         formData.append("price", price);
         formData.append("content", content);
 
-        console.log(formData);
+//        console.log(formData);
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
         });
@@ -131,31 +118,6 @@
             img.src = evt.target.result;
         };
         reader.readAsDataURL(file.files[0]);
-    }
-
-    //上传文件
-    function upload(input) {
-        var formData = new FormData();
-        formData.append("file",input.files[0]);
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
-        });
-        $.ajax({
-            url:'/admin/mcn/upload',
-            dataType:'json',
-            type:'POST',
-            async: false,
-            data: formData,
-            processData : false, // 使数据不做处理
-            contentType : false, // 不要设置Content-Type请求头
-            success: function(res){
-                if (res.status == 0){
-                    layer.msg('解析失败');
-                } else {
-                    ue.setContent(res.data);
-                }
-            }
-        });
     }
 
 </script>

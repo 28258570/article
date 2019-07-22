@@ -48,7 +48,6 @@ class McnController extends Controller
     public function store(Request $request)
     {
         if ($request->isMethod('post')) {
-
             try{
                 $file_cover = $request->file('cover');
                 $file_cover_name = FileUpload::fileUpload($file_cover,'mcn');
