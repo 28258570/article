@@ -22,7 +22,11 @@ class McnController extends Controller
      */
     public function index(Request $request)
     {
-        return view('admin.mcn.index');
+        $params = $request->all();
+        $list = Mcn::getData($params);
+        return view('admin.mcn.index',[
+            'list' => $list
+        ]);
     }
 
     /**
@@ -44,15 +48,25 @@ class McnController extends Controller
     public function store(Request $request)
     {
         if ($request->isMethod('post')) {
-            $file_cover = $request->file('cover');
-            $file_cover_name = FileUpload::fileUpload($file_cover,'mcn');
-            dd($file_cover_name);
-//            $params['name'] = $request->input('name');
-//            $params['introduce'] = $request->input('introduce');
-//            $params['price'] = $request->input('price');
-//            $params['content'] = $request->input('content');
-//            $params['cover'] = $file_cover_name;
-//            Mcn::addData($params);
+
+            try{
+                $file_cover = $request->file('cover');
+                $file_cover_name = FileUpload::fileUpload($file_cover,'mcn');
+                $params['name'] = $request->input('name');
+                $params['introduce'] = $request->input('introduce');
+                $params['price'] = $request->input('price');
+                $params['content'] = $request->input('content');
+                $params['cover'] = $file_cover_name;
+                $res = Mcn::addData($params);
+                if ($res){
+                    $result = ['status' => 1, 'msg' => '添加成功'];
+                } else {
+                    $result = ['status' => 0, 'msg' => '添加失败'];
+                }
+            } catch (\Exception $e){
+                $result = ['status' => 0, 'msg' => $e->getMessage()];
+            }
+            return response()->json($result);
         }
     }
 
@@ -75,7 +89,10 @@ class McnController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = (new Mcn())->find($id);
+        return view('admin.mcn.edit',[
+            'data' => $data
+        ]);
     }
 
     /**

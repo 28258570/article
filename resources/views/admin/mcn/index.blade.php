@@ -44,33 +44,41 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width:240px;">操作</th></tr>
                                     </thead>
                                     <tbody>
-                                    {{--@foreach($list as $k=>$v)--}}
+                                    @foreach($list as $k=>$v)
                                         <tr class="gradeA odd">
                                             <td class="sorting_1">
-                                                <input type="checkbox" class="checkbox">
+                                                <input type="checkbox" class="checkbox" value="{{$v->id}}">
                                             </td>
-                                            <td class="">1</td>
-                                            <td class=" ">名字</td>
-                                            <td class=" "><img style="width: 30px" src="/uploads/mcn/5d312f9d1036620190719104901.jpg"></td>
-                                            <td class=" ">介绍1111111111111111111111111111111111111</td>
-                                            <td class=" ">12.00</td>
-                                            <td class=" ">上架</td>
-                                            <td class=" ">9102 07 19</td>
+                                            <td class="">{{$v->id}}</td>
+                                            <td class=" ">{{$v->name}}</td>
+                                            <td class=" "><img style="width: 30px" src="{{url($v->cover)}}"></td>
+                                            <td class=" ">{{$v->introduce}}</td>
+                                            <td class=" ">{{$v->price}}</td>
+                                            <td class=" ">
+                                                @if($v->state == 1)
+                                                    下架
+                                                @else
+                                                    上架
+                                                @endif
+                                            </td>
+                                            <td class=" ">{{$v->created_at}}</td>
                                             <td class="center ">
-                                                <a href="/admin/mcn/1/edit" class="btn btn-info btn-sm">编辑</a>
-                                                <button class="btn btn-success btn-sm">上架</button>
-                                                <button class="btn btn-warning btn-sm">下架</button>
+                                                <a href="/admin/mcn/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
+                                                @if($v->state == 1)
+                                                    <button class="btn btn-success btn-sm">上架</button>
+                                                @else
+                                                    <button class="btn btn-warning btn-sm">下架</button>
+                                                @endif
                                                 <button onclick="del()" class="btn btn-danger btn-sm">删除</button>
                                             </td></tr>
-                                    {{--</tbody>--}}
-                                    {{--@endforeach--}}
+                                    @endforeach
+                                    </tbody>
                                 </table>
                                 <div class="row">
-
+                                    @if (!empty($list))
+                                        {{ $list->links() }}
+                                    @endif
                                 </div>
-                                @if (!empty($list))
-                                    {{ $list->links() }}
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -79,48 +87,6 @@
             </div>
         </div>
     </div>
-
-    <div class="dialog">
-        <div class="dia"></div>
-        <div class="log">
-            <span class="closes" onclick="closesThis()">×</span>
-            <div class="phones">
-                手机号: <span id="mobile"></span>
-            </div>
-            <div class="yigou">
-                <p>已购买的指南: </p>
-                <div class="lists">
-
-                    <div>
-                        <span class="mediaName">YELLOW小视频在线观看</span>
-                        <span class="deletes" onclick="deletes()">删除</span>
-                    </div>
-                    <div>
-                        <span class="mediaName">YELLOW小视频在线观看</span>
-                        <span class="deletes" onclick="deletes()">删除</span>
-                    </div>
-                    <div>
-                        <span class="mediaName">YELLOW小视频在线观看</span>
-                        <span class="deletes" onclick="deletes()">删除</span>
-                    </div>
-                    <div>
-                        <span class="mediaName">YELLOW小视频在线观看</span>
-                        <span class="deletes" onclick="deletes()">删除</span>
-                    </div>
-                    <div>
-                        <span class="mediaName">YELLOW小视频在线观看</span>
-                        <span class="deletes" onclick="deletes()">删除</span>
-                    </div>
-                    <div>
-                        <span class="mediaName">YELLOW小视频在线观看</span>
-                        <span class="deletes" onclick="deletes()">删除</span>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <script>
         //删除

@@ -9,6 +9,11 @@ class Mcn extends Model
     //
     protected $table = 'mcn';
 
+    /**
+     * 添加MCN机构
+     * @param $params
+     * @return bool
+     */
     public static function addData($params)
     {
         $model = (new self());
@@ -17,8 +22,22 @@ class Mcn extends Model
         $model->introduce = $params['introduce'];
         $model->price = $params['price'];
         $model->content = $params['content'];
-        $model->picture = $params['picture'];
+//        $model->picture = $params['picture'];
         $model->state = 1;
-        dd($params);
+        return $model->save();
+    }
+
+    /**
+     * MCN机构列表
+     * @param $oarams
+     * @param int $page
+     * @return Mcn|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public static function getData($oarams,$page=10)
+    {
+        $list = new self();
+
+        $list = $list->orderBy('id', 'desc')->paginate($page);
+        return $list;
     }
 }

@@ -104,15 +104,17 @@
             data: formData,
             processData : false, //使数据不做处理
             contentType : false, //不要设置Content-Type请求头
-            success: function(data){
-//                console.log(data);
-//                if (data.status == 'ok') {
-//                    alert('上传成功！');
-//                }
-
-            },
-            error:function(response){
-//                console.log(response);
+            success: function(res){
+                if (res.status == 0){
+                    layer.msg(res.msg);
+                } else {
+                    layer.msg(res.msg,{
+                        offset:['50%'],
+                        time: 2000
+                    },function(){
+                        window.location.reload();
+                    });
+                }
             }
         });
     }
