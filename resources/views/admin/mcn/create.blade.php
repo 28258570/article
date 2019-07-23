@@ -1,5 +1,11 @@
 @extends('admin.layout.layout')
 @section('content')
+<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<link href="/assets/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<script src="/assets/js/fileinput.js" type="text/javascript"></script>
+<script src="/assets/js/fileinput_locale_zh.js" type="text/javascript"></script>
+
+
     <style>
         .small-right{
             position: relative;
@@ -25,7 +31,17 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <form id="myform" onsubmit="return false">
+                            	<form enctype="multipart/form-data" id="form_addfishContent">
+                            		<div class="form-group"  style="display: block;">
+					                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+					                </div>
+					                <button onclick="aa()"></button>
+                            	</form>
+                            	
+                                <form id="myform" onsubmit="return false" >
+					                <div class="form-group"  style="display: block;">
+					                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+					                </div>
                                     <div class="form-group" >
                                         <label>MCN名称</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="MCN名称">
@@ -62,13 +78,67 @@
             <!-- /.col-lg-12 -->
         </div>
     </div>
+    <img src="blob:http://www.blog.cn/b7ad76be-cded-45b8-9d51-1031c0fe04b5">
 <script>
-
+	function aa(){
+		console.log($("#form_addfishContent").serialize())
+	}
+	
+	
+	
+	$("#file-1").fileinput({
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png' , 'jpeg'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+//      showUpload : false, //是否显示上传按钮,跟随文本框的那个
+        dropZoneEnabled : false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
+        maxFilesNum:5,
+        uploadExtraData:function (previewId, index) {
+            //向后台传递id作为额外参数，是后台可以根据id修改对应的图片地址。
+            var obj = {};
+            obj.id = fishId;
+            return obj;
+        }
+    }).on("filebatchuploadsuccess", function(event, data) {
+        if(data.response){
+            closeModal('fishAddDetail') 关闭模态框。
+            $("#bootstraptable_fishcontent").bootstrapTable("refresh");
+        }
+    }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
+        console.log('文件上传失败！'+msg);
+    });
+        
+        
+        
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
+	initFileInput("file-1", "/User/EditPortrait");
+	//初始化fileinput控件（第一次初始化）
+	function initFileInput(ctrlName, uploadUrl) {
+	    var control = $('#' + ctrlName); 
+	    control.fileinput({
+	        language: 'zh', //设置语言
+	        uploadUrl: uploadUrl, //上传的地址
+	        allowedFileExtensions : ['jpg', 'png','jpeg'],//接收的文件后缀
+	        showUpload: false, //是否显示上传按钮
+	        showCaption: false,//是否显示标题
+	        browseClass: "btn btn-primary", //按钮样式
+	        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
+	    });
+	};
+	
+	
     function confim() {
+    	
+    	
+    	
+    	
         var name = $.trim($('#name').val());
         var introduce = $.trim($('#introduce').val());
         var price = $.trim($('#price').val());
-        var content = ue.getContent();
         var cover = $('#cover')[0].files[0];
 
         var formData = new FormData();
@@ -77,7 +147,6 @@
         formData.append("name", name);
         formData.append("introduce", introduce);
         formData.append("price", price);
-        formData.append("content", content);
 
 //        console.log(formData);
         $.ajaxSetup({
