@@ -37,3 +37,4 @@ Route::post('admin/mcn/change', 'Admin\McnController@change');//改变MCN机构�
 Route::post('admin/mcn/batchDel', 'Admin\McnController@batchDel');//批量删除MCN机构状态
 Route::post('admin/mcnMeal/change', 'Admin\McnMealController@change');//改变MCN机构套餐状态
 Route::post('admin/mcnMeal/batchDel', 'Admin\McnMealController@batchDel');//批量删除MCN机构套餐状态
+Route::resource('admin/order', 'Admin\OrderController');//订单管理

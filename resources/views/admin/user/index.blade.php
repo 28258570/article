@@ -26,7 +26,7 @@
                                     <div class="col-sm-6">
                                         <form action="" name="search">
                                             <label>手机号:<input type="text" class="form-control input-sm" name="mobile" value="{{$params['mobile'] or ''}}" aria-controls="dataTables-example"></label>
-                                            <button type="submit" class="btn btn-default">提交</button>
+                                            <button type="submit" class="btn btn-default btn-sm">提交</button>
                                         </form>
                                     </div>
 

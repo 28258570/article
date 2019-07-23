@@ -14,6 +14,8 @@
     <!-- Custom Styles-->
     <link href="/assets/css/custom-styles.css" rel="stylesheet" />
     <link href="/layui/css/layui.css" rel="stylesheet" />
+    <!-- 日期css -->
+    <link rel="stylesheet" href="/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css">
     <link rel="stylesheet" href="{{URL::asset('/css/animate.css')}}">
     <style>
         .dia{
@@ -109,6 +111,20 @@
         #img_cover{
             width: 90px;
         }
+        .my-form{
+            width: 1400px;
+            display: -webkit-inline-box;
+        }
+        .input-group .form-control{
+            float: none;
+        }
+        .input-daterange input{
+            text-align: left;
+        }
+        .input-group-add{
+            padding-left: 3px;
+            padding-right: 3px;
+        }
     </style>
 </head>
 
@@ -190,7 +206,9 @@
 {{--<script src="/assets/js/custom-scripts.js"></script>--}}
 <script src="/layui/layui.js"></script>
 <script src="/layui/layui.all.js"></script>
-
+<!--日期js-->
+<script src="/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 </body>
 
 </html>
