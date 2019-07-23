@@ -16,7 +16,7 @@ class McnController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * MCN机构列表
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class McnController extends Controller
     }
 
     /**
-     * 添加MCN管理界面
+     * 添加MCN机构界面
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,7 +40,7 @@ class McnController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 添加MCN机构方法
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -81,7 +81,7 @@ class McnController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 修改MCN机构界面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -95,7 +95,7 @@ class McnController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 修改MCN管理方法
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -107,14 +107,24 @@ class McnController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除MCN机构
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        try {
+            $res = Mcn::destroy($id);
+            if ($res){
+                $result = ['status' => 1, 'msg' => '删除成功'];
+            } else {
+                $result = ['status' => 0, 'msg' => '删除失败'];
+            }
+        }catch(\Exception $e) {
+            $result = ['status' => 0, 'msg' => $e->getMessage()];
+        }
+        return response()->json($result);
     }
 
     /**
@@ -136,4 +146,46 @@ class McnController extends Controller
         }
         return response()->json($result);
     }
+
+    /**
+     * 上架下架
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function change(Request $request)
+    {
+        try {
+            $res = (new Mcn())->changeStateById($request->input('id'),$request->input('state'));
+            if ($res){
+                $result = ['status' => 1, 'msg' => '操作成功'];
+            } else {
+                $result = ['status' => 0, 'msg' => '操作失败'];
+            }
+        }catch(\Exception $e) {
+            $result = ['status' => 0, 'msg' => $e->getMessage()];
+        }
+        return response()->json($result);
+    }
+
+    /**
+     * 批量删除
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function batchDel(Request $request)
+    {
+        try {
+            $ids = explode(',',$request->input('id'));
+            $res = Mcn::destroy($ids);
+            if ($res > 0){
+                $result = ['status' => 1, 'msg' => '删除成功'];
+            } else {
+                $result = ['status' => 0, 'msg' => '删除失败'];
+            }
+        }catch(\Exception $e) {
+            $result = ['status' => 0, 'msg' => $e->getMessage()];
+        }
+        return response()->json($result);
+    }
+
 }

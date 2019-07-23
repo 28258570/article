@@ -104,6 +104,11 @@ class UserController extends Controller
         return response()->json($result);
     }
 
+    /**
+     * 查看用户购买信息
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function order(Request $request)
     {
         try {

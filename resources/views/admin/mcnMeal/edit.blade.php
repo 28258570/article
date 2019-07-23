@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-header">
-                    MCN机构管理 <small></small>
+                    MCN机构套餐管理 <small></small>
                 </h1>
             </div>
         </div>
@@ -20,39 +20,39 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        修改MCN机构
+                        修改MCN机构套餐
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-6">
                                 <form id="myform" onsubmit="return false">
                                     <div class="form-group" >
-                                        <label>上传</label><small class="small-right">仅支持DOCX格式，点击上传文档将自动生成至内容框内</small>
-                                        <input type="file" id="article" onchange="upload(this)">
-                                        {{--<button class="layui-btn layui-btn-sm" onclick="upload()" style="position:relative;top: 10px;">上传</button>--}}
-                                    </div>
-                                    <div class="form-group" >
-                                        <label>MCN名称</label>
+                                        <label>MCN套餐名称</label>
                                         <input type="text" class="form-control" id="name" name="name" value="{{$data->name}}" placeholder="MCN名称">
                                     </div>
                                     <div class="form-group">
-                                        <label>封面</label>
+                                        <label>套餐封面</label>
                                         <input type="file" id="cover" onchange="show(this)" name="cover">
                                         <img id="img_cover" src="{{url($data->cover)}}">
                                     </div>
                                     <div class="form-group" >
-                                        <label>介绍</label>
-                                        <input type="text" id="introduce" class="form-control" name="introduce" value="{{$data->introduce}}" placeholder="介绍">
+                                        <label>套餐介绍</label>
+                                        <input type="text" id="introduce" class="form-control" value="{{$data->introduce}}" name="introduce" placeholder="介绍">
                                     </div>
                                     <div class="form-group" >
-                                        <label>价格</label>
+                                        <label>套餐价格</label>
                                         <input type="text" id="price" class="form-control" name="price" value="{{$data->price}}" placeholder="价格">
                                     </div>
                                     <div class="form-group">
-                                        <label>内容</label>
-
+                                        <label>MCN机构</label>
+                                        @foreach(\App\Models\McnMeal::getMcnList() as $k=>$v)
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" @if(in_array($v->id,$data->mcn_id)) checked @endif class="checkbox" value="{{$v->id}}">{{$v->name}}
+                                                </label>
+                                            </div>
+                                        @endforeach
                                     </div>
-
                                     <button class="btn btn-default" onclick="confim()">确认</button>
                                     <button type="reset" class="btn btn-default" onclick="javascript:history.go(-1);">返回</button>
                                 </form>
@@ -71,10 +71,17 @@
     <script>
 
         function confim() {
+            var id = "{{$data->id}}";
+            var mcn_id = '';
+            $(".checkbox:checkbox").each(function() {
+                if($(this).is(":checked")) {
+                    mcn_id += $(this).attr("value")+",";
+                }
+            });
+            mcn_id=mcn_id.substring(0,mcn_id.length-1);
             var name = $.trim($('#name').val());
             var introduce = $.trim($('#introduce').val());
             var price = $.trim($('#price').val());
-            var content = ue.getContent();
             var cover = $('#cover')[0].files[0];
 
             var formData = new FormData();
@@ -83,14 +90,15 @@
             formData.append("name", name);
             formData.append("introduce", introduce);
             formData.append("price", price);
-            formData.append("content", content);
+            formData.append("mcn_id", mcn_id);
+            formData.append("_method", "put");
 
-            console.log(formData);
+//        console.log(formData);
             $.ajaxSetup({
                 headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
             });
             $.ajax({
-                url:'/admin/mcn',
+                url:'/admin/mcnMeal/'+id,
                 dataType:'json',
                 type:'POST',
                 async: false,
@@ -124,31 +132,6 @@
                 img.src = evt.target.result;
             };
             reader.readAsDataURL(file.files[0]);
-        }
-
-        //上传文件
-        function upload(input) {
-            var formData = new FormData();
-            formData.append("file",input.files[0]);
-            $.ajaxSetup({
-                headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}
-            });
-            $.ajax({
-                url:'/admin/mcn/upload',
-                dataType:'json',
-                type:'POST',
-                async: false,
-                data: formData,
-                processData : false, // 使数据不做处理
-                contentType : false, // 不要设置Content-Type请求头
-                success: function(res){
-                    if (res.status == 0){
-                        layer.msg('解析失败');
-                    } else {
-                        ue.setContent(res.data);
-                    }
-                }
-            });
         }
 
     </script>

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-header">
-                    MCN机构管理 <small></small>
+                    MCN机构套餐管理 <small></small>
                 </h1>
             </div>
         </div>
@@ -15,33 +15,26 @@
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        MCN机构列表
+                        MCN机构套餐列表
                     </div>
-                    <a style="margin-top: 10px;margin-left: 15px;" href="/admin/mcn/create" class="btn btn-default btn-sm"><i class="layui-icon layui-icon-add-1"></i>添加MCN机构</a>
+                    <a style="margin-top: 10px;margin-left: 15px;" href="/admin/mcnMeal/create" class="btn btn-default btn-sm"><i class="layui-icon layui-icon-add-1"></i>添加MCN机构套餐</a>
                     <button style="margin-top: 10px;margin-left: 15px;" onclick="batchDel()" class="btn btn-danger btn-sm"><i class="layui-icon layui-icon-delete"></i>批量删除</button>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-sm-6">--}}
-                                        {{--<form action="" name="search">--}}
-                                            {{--<label>手机号:<input type="text" class="form-control input-sm" name="mobile" value="{{$params['mobile'] or ''}}" aria-controls="dataTables-example"></label>--}}
-                                            {{--<button type="submit" class="btn btn-default">提交</button>--}}
-                                        {{--</form>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
                                     <thead>
                                     <tr role="row">
                                         <th style="width: 40px">#</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">ID</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">MCN名称</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">封面</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">介绍</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">MCN套餐名称</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">套餐封面</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">套餐介绍</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">价格</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">状态</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">创建时间</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width:240px;">操作</th></tr>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width:200px;">操作</th></tr>
                                     </thead>
                                     <tbody>
                                     @foreach($list as $k=>$v)
@@ -63,7 +56,7 @@
                                             </td>
                                             <td class=" ">{{$v->created_at}}</td>
                                             <td class="center ">
-                                                <a href="/admin/mcn/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
+                                                <a href="/admin/mcnMeal/{{$v->id}}/edit" class="btn btn-info btn-sm">编辑</a>
                                                 @if($v->state == 1)
                                                     <button class="btn btn-success btn-sm" onclick="change({{$v->id}},{{$v->state}})">上架</button>
                                                 @else
@@ -98,7 +91,7 @@
                     layer.close(index);
                     $.ajax({
                         type:'post',
-                        url:'/admin/mcn/'+id,
+                        url:'/admin/mcnMeal/'+id,
                         data:{
                             _method:'delete',
                             _token:"{{csrf_token()}}",
@@ -122,25 +115,6 @@
             });
         }
 
-        //点击查看账户购买数据
-        {{--function watchDetail(id){--}}
-            {{--$('.log').removeClass('zoomOut')--}}
-            {{--$('.dia,.log').show();--}}
-            {{--$('.log').addClass('animated zoomIn')--}}
-            {{--$.ajax({--}}
-                {{--type:'post',--}}
-                {{--url:'/admin/user/order',--}}
-                {{--data:{--}}
-                    {{--_token: "{{csrf_token()}}",--}}
-                    {{--id: id--}}
-                {{--},--}}
-                {{--dataType:"json",--}}
-                {{--async:false,--}}
-                {{--success: function (res) {--}}
-                    {{--$('#mobile').html(res.data.mobile);--}}
-                {{--}--}}
-            {{--});--}}
-        {{--}--}}
         //关闭
         function closesThis(){
             $('.log').removeClass('zoomIn')
@@ -152,7 +126,7 @@
         function change(id,state) {
             $.ajax({
                 type:'post',
-                url:'/admin/mcn/change',
+                url:'/admin/mcnMeal/change',
                 data:{
                     _token: "{{csrf_token()}}",
                     id: id,
@@ -189,7 +163,7 @@
             } else {
                 $.ajax({
                     type:'post',
-                    url:'/admin/mcn/batchDel',
+                    url:'/admin/mcnMeal/batchDel',
                     data:{
                         _token:"{{csrf_token()}}",
                         id:id

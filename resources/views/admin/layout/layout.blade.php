@@ -106,6 +106,9 @@
         .dialog>div{
             display: none;
         }
+        #img_cover{
+            width: 90px;
+        }
     </style>
 </head>
 

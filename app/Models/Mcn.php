@@ -40,4 +40,20 @@ class Mcn extends Model
         $list = $list->orderBy('id', 'desc')->paginate($page);
         return $list;
     }
+
+    /**
+     * 根据ID修改MCN机构状态
+     * @param $id
+     * @param $state
+     * @return bool
+     */
+    public function changeStateById($id,$state)
+    {
+        if ($state == 1){
+            $data['state'] = 2;
+        } else {
+            $data['state'] = 1;
+        }
+        return $this->where('id','=',$id)->update($data);
+    }
 }

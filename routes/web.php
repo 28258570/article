@@ -33,3 +33,7 @@ Route::any('admin/login/login', 'Admin\LoginController@login');//后台登录页
 Route::any('admin/login/logout', 'Admin\LoginController@logout');//后台注销
 Route::post('admin/user/order', 'Admin\UserController@order');//获取用户订单
 Route::post('admin/mcn/upload', 'Admin\McnController@upload');//文章上传
+Route::post('admin/mcn/change', 'Admin\McnController@change');//改变MCN机构状态
+Route::post('admin/mcn/batchDel', 'Admin\McnController@batchDel');//批量删除MCN机构状态
+Route::post('admin/mcnMeal/change', 'Admin\McnMealController@change');//改变MCN机构套餐状态
+Route::post('admin/mcnMeal/batchDel', 'Admin\McnMealController@batchDel');//批量删除MCN机构套餐状态
