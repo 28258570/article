@@ -1,5 +1,6 @@
 @extends('admin.layout.layout')
 @section('content')
+    {{--<script src="https://cdn.bootcss.com/jquery/3.4.1/core.js"></script--}}
     <style>
         .mediaName{
             width: 100%;
@@ -106,12 +107,12 @@
         </div>
     </div>
     <script>
-        $(function () {
-            $('#datepicker').datepicker({
-                format: "yyyy-mm-dd",
-                language: "zh-CN"
-            });
-        });
+$(function () {
+    $('#datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        language: "zh-CN"
+    });
+});
 
         //点击查看账户购买数据
         function watchDetail(id){
