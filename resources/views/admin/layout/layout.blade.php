@@ -17,6 +17,16 @@
     <!-- 日期css -->
     <link rel="stylesheet" href="/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css">
     <link rel="stylesheet" href="{{URL::asset('/css/animate.css')}}">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.metisMenu.js"></script>
+    <script src="/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/layui/layui.js"></script>
+    <script src="/layui/layui.all.js"></script>
+    <!--日期js-->
+    <script src="/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <style>
         .dia{
             position: fixed;
@@ -180,9 +190,6 @@
     <!-- /. PAGE WRAPPER  -->
 </div>
 <!-- /. WRAPPER  -->
-<!-- JS Scripts-->
-<!-- jQuery Js -->
-<script src="/assets/js/jquery-1.10.2.js"></script>
 <script>
 	//对菜单的状态附加
 	$(document).ready(function(){
@@ -194,21 +201,5 @@
 	    });  
 	}); 
 </script>
-<!-- Bootstrap Js -->
-<script src="/assets/js/bootstrap.min.js"></script>
-{{--<script src="/assets/js/jquery-2.0.0.min.js"></script>--}}
-<!-- Metis Menu Js -->
-<script src="/assets/js/jquery.metisMenu.js"></script>
-<!-- Morris Chart Js -->
-<script src="/assets/js/morris/raphael-2.1.0.min.js"></script>
-{{--<script src="/assets/js/morris/morris.js"></script>--}}
-<!-- Custom Js -->
-{{--<script src="/assets/js/custom-scripts.js"></script>--}}
-<script src="/layui/layui.js"></script>
-<script src="/layui/layui.all.js"></script>
-<!--日期js-->
-<script src="/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<script src="/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 </body>
-
 </html>

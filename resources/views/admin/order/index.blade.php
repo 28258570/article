@@ -107,12 +107,12 @@
         </div>
     </div>
     <script>
-$(function () {
-    $('#datepicker').datepicker({
-        format: "yyyy-mm-dd",
-        language: "zh-CN"
-    });
-});
+        $(function () {
+            $('#datepicker').datepicker({
+                format: "yyyy-mm-dd",
+                language: "zh-CN"
+            });
+        });
 
         //点击查看账户购买数据
         function watchDetail(id){
